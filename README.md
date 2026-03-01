@@ -1,4 +1,4 @@
-# GPP — General Purpose Parser
+# pp — Parallel Parser
 
 A C++ language parsing framework with Perl/Python bindings, designed to parse any language through dynamically configurable grammars. The parser produces a normalized functional IR (intermediate representation) suitable for LLVM JIT compilation, formal verification, and static analysis.
 
@@ -57,7 +57,7 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for full details.
 
 ## Validation Target: UVM
 
-The Universal Verification Methodology exercises every difficult corner of SystemVerilog: parameterized classes, factory macros, virtual interfaces, constraint blocks, covergroups. Open-source parsers like iverilog cannot handle UVM. GPP targets full UVM parsing as its existence proof.
+The Universal Verification Methodology exercises every difficult corner of SystemVerilog: parameterized classes, factory macros, virtual interfaces, constraint blocks, covergroups. Open-source parsers like iverilog cannot handle UVM. pp targets full UVM parsing as its existence proof.
 
 ## Building
 

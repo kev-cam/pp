@@ -2,7 +2,7 @@
 
 ## Design Philosophy
 
-The GPP intermediate representation is **normalized functional code**. All syntactic sugar from source languages is removed during parsing. The IR has exactly five constructs, no more.
+The pp intermediate representation is **normalized functional code**. All syntactic sugar from source languages is removed during parsing. The IR has exactly five constructs, no more.
 
 The IR contains **no undefined behavior, no implementation-defined behavior, and no unspecified behavior.** Every source-language construct receives deterministic rewrite rules that produce unambiguous IR. This property makes the IR suitable for formal verification by construction.
 

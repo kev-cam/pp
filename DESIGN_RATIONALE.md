@@ -4,19 +4,19 @@
 
 The EDA industry's parsers are built on 30+ years of lex/yacc legacy. These tools bake language grammars into compiled C code. You cannot swap grammars at runtime, stack them, or add operators dynamically. This architectural limitation cascades into every downstream tool: each simulator, linter, and formal tool reinvents its own parser, its own AST, its own language quirks. Mixed-language designs require bridging layers between incompatible representations.
 
-GPP replaces this with a single parsing engine where languages are grammar configurations, not hardcoded parsers, and all languages produce the same IR.
+pp replaces this with a single parsing engine where languages are grammar configurations, not hardcoded parsers, and all languages produce the same IR.
 
 ## Why No Undefined Behavior
 
 Undefined behavior in source languages (C's sequence points, Verilog's scheduling ambiguities) creates holes in the semantic model. Formal verification tools must either consider all possible interpretations (state space explosion) or assume one (unsoundness). By assigning deterministic rewrite rules to every construct, the IR is formally verifiable by construction. There is exactly one interpretation for every IR sequence.
 
-This is a deliberate departure from the C philosophy where undefined behavior enables compiler optimization. GPP is not a compiler — it's a verification-friendly representation. Determinism is more valuable than optimization freedom.
+This is a deliberate departure from the C philosophy where undefined behavior enables compiler optimization. pp is not a compiler — it's a verification-friendly representation. Determinism is more valuable than optimization freedom.
 
 ## Why Uniform Call Graph IR
 
 The SystemVerilog DPI (Direct Programming Interface) standard was designed to bridge SystemVerilog and C by marshalling data across a language boundary. The result is wrapper functions, restricted type mappings, implementation-divergent behavior across simulators, and performance overhead for what should be a simple function call.
 
-The fundamental problem was treating languages as separate domains requiring a bridge. GPP eliminates the boundary entirely. A SystemVerilog module calling a C++ function is one call node referencing another in the same IR. There is no marshalling, no wrappers, no impedance mismatch.
+The fundamental problem was treating languages as separate domains requiring a bridge. pp eliminates the boundary entirely. A SystemVerilog module calling a C++ function is one call node referencing another in the same IR. There is no marshalling, no wrappers, no impedance mismatch.
 
 This is what a proper cross-language ABI would have looked like: a shared representation where "foreign" calls are indistinguishable from native calls.
 
@@ -40,9 +40,9 @@ Blocking would serialize the parse along the critical dependency path. Reorderin
 
 ## Why Preprocessor-Driven Grammar Configuration
 
-Every language GPP targets already has a preprocessor. C has `#define`/`#include`/`#pragma`. Verilog has `` `define``/`` `include``. Rather than inventing a separate metalanguage for grammar specification, GPP extends the preprocessor mechanism that users already understand.
+Every language pp targets already has a preprocessor. C has `#define`/`#include`/`#pragma`. Verilog has `` `define``/`` `include``. Rather than inventing a separate metalanguage for grammar specification, pp extends the preprocessor mechanism that users already understand.
 
-This also means grammar definitions compose naturally. A base SystemVerilog grammar can be extended with UVM-specific operator definitions via `#pragma grammar "uvm-extensions.gpp"` — the same inclusion mechanism used for regular code.
+This also means grammar definitions compose naturally. A base SystemVerilog grammar can be extended with UVM-specific operator definitions via `#pragma grammar "uvm-extensions.pp"` — the same inclusion mechanism used for regular code.
 
 ## Why Dynamic Operators
 

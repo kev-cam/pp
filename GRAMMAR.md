@@ -2,7 +2,7 @@
 
 ## Overview
 
-GPP does not contain hardcoded language grammars. Each source language is defined by a set of preprocessor pragmas that configure the parser's keyword table, operator table, rewrite rules, and context transitions. Switching languages is loading a different configuration. Defining a new DSL is writing a new one.
+pp does not contain hardcoded language grammars. Each source language is defined by a set of preprocessor pragmas that configure the parser's keyword table, operator table, rewrite rules, and context transitions. Switching languages is loading a different configuration. Defining a new DSL is writing a new one.
 
 ## Preprocessor Pragma Syntax
 
@@ -140,24 +140,24 @@ Pushes the current grammar tables onto a stack and loads the named language's gr
 Loads a grammar definition file containing keyword, operator, and rewrite rule pragmas. This is how standard language definitions are distributed.
 
 ```
-#pragma grammar "grammars/systemverilog-2017.gpp"
-#pragma grammar "grammars/uvm-extensions.gpp"
+#pragma grammar "grammars/systemverilog-2017.pp"
+#pragma grammar "grammars/uvm-extensions.pp"
 ```
 
 ## Standard Grammar Libraries
 
-GPP ships with grammar definitions for:
+pp ships with grammar definitions for:
 
 | File | Language |
 |------|----------|
-| `systemverilog.gpp` | IEEE 1800-2017 SystemVerilog |
-| `verilog-ams.gpp`   | Verilog-AMS 2.4 |
-| `vhdl.gpp`          | IEEE 1076-2008 VHDL |
-| `c.gpp`             | C11 |
-| `cpp.gpp`           | C++17 subset |
-| `spice.gpp`         | SPICE netlist |
-| `liberty.gpp`       | Liberty timing format |
-| `sdc.gpp`           | Synopsys Design Constraints |
+| `systemverilog.pp` | IEEE 1800-2017 SystemVerilog |
+| `verilog-ams.pp`   | Verilog-AMS 2.4 |
+| `vhdl.pp`          | IEEE 1076-2008 VHDL |
+| `c.pp`             | C11 |
+| `cpp.pp`           | C++17 subset |
+| `spice.pp`         | SPICE netlist |
+| `liberty.pp`       | Liberty timing format |
+| `sdc.pp`           | Synopsys Design Constraints |
 
 ## Context Interaction
 
@@ -175,7 +175,7 @@ Contexts nest. A `constraint` block inside a `class` inside a `module` has three
 A complete quantum circuit DSL defined in a single grammar file:
 
 ```
-// quantum.gpp — Quantum Circuit DSL
+// quantum.pp — Quantum Circuit DSL
 
 #pragma keyword qubit    decl_type
 #pragma keyword measure  block_context context=measurement
@@ -187,7 +187,7 @@ A complete quantum circuit DSL defined in a single grammar file:
 #pragma operator ◦   precedence=9  assoc=left    // composition
 
 // Usage:
-// #pragma grammar "quantum.gpp"
+// #pragma grammar "quantum.pp"
 // circuit bell_state
 //   qubit a, b
 //   a |> H |> CNOT ⊗ b |> measure

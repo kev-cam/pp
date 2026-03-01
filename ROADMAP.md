@@ -32,7 +32,7 @@
 
 **Goal:** Parse real UVM testbenches that iverilog rejects.
 
-- [ ] SystemVerilog grammar file (`systemverilog.gpp`)
+- [ ] SystemVerilog grammar file (`systemverilog.pp`)
   - [ ] Module/interface/class/package declarations
   - [ ] Parameterized classes and type specialization
   - [ ] Constraint blocks with `inside`, `dist`, implication operators
@@ -78,10 +78,10 @@
 
 **Goal:** Demonstrate generality beyond SystemVerilog.
 
-- [ ] VHDL grammar file (`vhdl.gpp`)
-- [ ] Verilog-AMS grammar file (`verilog-ams.gpp`)
-- [ ] C11 grammar file (`c.gpp`)
-- [ ] C++17 subset grammar file (`cpp.gpp`)
+- [ ] VHDL grammar file (`vhdl.pp`)
+- [ ] Verilog-AMS grammar file (`verilog-ams.pp`)
+- [ ] C11 grammar file (`c.pp`)
+- [ ] C++17 subset grammar file (`cpp.pp`)
 - [ ] Mixed-language test: SystemVerilog + C++ in one parse
 - [ ] SPICE netlist grammar
 - [ ] Liberty / SDC grammars

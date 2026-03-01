@@ -2,7 +2,7 @@
 
 ## Pipeline Overview
 
-GPP processes source code in three stages: ripping, parallel parsing, and backend consumption. Each stage is designed for a specific performance and correctness goal.
+pp processes source code in three stages: ripping, parallel parsing, and backend consumption. Each stage is designed for a specific performance and correctness goal.
 
 ## Stage 1: The Ripper
 
